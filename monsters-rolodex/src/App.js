@@ -8,29 +8,21 @@ class App extends Component {
 		super();
 
 		this.state = {
-			monsters: [
-				{
-					name: 'Linda',
-					id: '123kfh345'
-				},
-				{
-					name: 'Frank',
-					id: '123kfh346'
-				},
-				{
-					name: 'Jacky',
-					id: '123kfh347'
-				},
-				{
-					name: 'Andrei',
-					id: '123kfh348'
-				},
-				{
-					name: 'Brian',
-					id: '123kfh349'
-				}
-			]
+			monsters: []
 		};
+	}
+
+	componentDidMount() {
+		fetch('https://jsonplaceholder.typicode.com/users').then((response) => response.json()).then((users) =>
+			this.setState(
+				() => {
+					return { monsters: users };
+				},
+				() => {
+					console.log(this.state);
+				}
+			)
+		);
 	}
 
 	render() {
