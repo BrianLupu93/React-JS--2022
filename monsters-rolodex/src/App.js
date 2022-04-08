@@ -25,7 +25,7 @@ const App = () => {
 
 			setFilteredMonsters(newFilteredMonsters);
 		},
-		[ monsters, searchField, title ]
+		[ monsters, searchField ]
 	);
 
 	const onSearchChange = (event) => {
