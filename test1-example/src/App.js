@@ -2,29 +2,19 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 const App = () => {
-	const [ inputCountry, setInputCountry ] = useState('');
 	const [ country, setCountry ] = useState('');
 	const [ universities, setUniversities ] = useState([]);
-	const [ test, setTest ] = useState('');
 
 	const countryNameImputed = (event) => {
 		const inputString = event.target.value;
-		setInputCountry(inputString);
+		setCountry(inputString);
 	};
 
 	const submitCountryName = (event) => {
-		setCountry(inputCountry);
-	};
-
-	console.log(country);
-
-	useEffect(() => {
 		fetch(`http://universities.hipolabs.com/search?country=${country}`)
 			.then((response) => response.json())
-			.then((unv) => setUniversities({ unv }));
-	}, []);
-
-	console.log(universities);
+			.then((unv) => setUniversities(unv));
+	};
 
 	return (
 		<div>
@@ -34,6 +24,11 @@ const App = () => {
 			<button className="submitButton" type="submit" onClick={submitCountryName}>
 				OK
 			</button>
+			<ul>
+				{universities.map((unv) => {
+					return <li>{unv.name}</li>;
+				})}
+			</ul>
 		</div>
 	);
 };
