@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
+import InputBox from './components/input-box';
+import UniversitiesList from './components/list-box';
+
 const App = () => {
 	const [ country, setCountry ] = useState('');
 	const [ universities, setUniversities ] = useState([]);
@@ -14,21 +17,27 @@ const App = () => {
 		fetch(`http://universities.hipolabs.com/search?country=${country}`)
 			.then((response) => response.json())
 			.then((unv) => setUniversities(unv));
+
+		setCountry('');
 	};
+
+	console.log(universities);
 
 	return (
 		<div>
 			<h1>Search University</h1>
 			<p>Type the country</p>
-			<input className="countryInputString" type="text" placeholder="ex: Italy" onChange={countryNameImputed} />
+			<InputBox
+				className="countryInputString"
+				type="text"
+				placeholder="ex: Italy"
+				value={country}
+				onChange={countryNameImputed}
+			/>
 			<button className="submitButton" type="submit" onClick={submitCountryName}>
 				OK
 			</button>
-			<ul>
-				{universities.map((unv) => {
-					return <li>{unv.name}</li>;
-				})}
-			</ul>
+			<UniversitiesList universities={universities} />
 		</div>
 	);
 };
