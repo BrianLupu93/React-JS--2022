@@ -1,5 +1,11 @@
+import ToDoForm from './components/toDoForm';
+
 const App = () => {
-	return <div>TO-DO-APP</div>;
+	return (
+		<div>
+			<ToDoForm />
+		</div>
+	);
 };
 
 export default App;
