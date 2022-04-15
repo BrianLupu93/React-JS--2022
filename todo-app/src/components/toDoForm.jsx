@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import './toDoForm.css';
 
 const ToDoForm = () => {
 	const [ input, setInput ] = useState('');
@@ -16,24 +18,51 @@ const ToDoForm = () => {
 		setInput('');
 	};
 
-	console.log(toDoListElement);
+	const deleteElement = (event) => {
+		event.preventDefault();
+		const elementToDelete = event.target.id;
+		const newToDoListElement = [ ...toDoListElement ];
+		newToDoListElement.splice(elementToDelete, 1);
+
+		console.log(newToDoListElement);
+
+		setToDoListElement(newToDoListElement);
+	};
+
 	return (
 		<form className="toDoForm">
+			<h1 className="app-title">WHAT ARE YOUR TASKS FOR TODAY??</h1>
 			<ul>
-				To-Do List
 				{toDoListElement.map((listElement) => (
 					<li className="list-element" id={toDoListElement.indexOf(listElement)}>
 						{listElement}
-						<button className="complete-list-elemet">complete</button>
-						<button className="edit-list-element">edit</button>
-						<button className="delete-list-elemet">X</button>
+						<div className="setting-buttons">
+							<button className="btn complete-list-element">COMPLETE</button>
+							<button className="btn edit-list-element">EDIT</button>
+							<button
+								className="btn delete-list-element"
+								onClick={deleteElement}
+								id={toDoListElement.indexOf(listElement)}
+							>
+								X
+							</button>
+						</div>
 					</li>
 				))}
 			</ul>
-			<input className="toDoInput" type="text" onChange={getInputValue} value={input} placeholder="add a to-do" />
-			<button className="addToDoButton" type="submit" onClick={addToDoHandle}>
-				Add To-Do
-			</button>
+			<div className="input-field">
+				{' '}
+				<input
+					className="toDoInput"
+					type="text"
+					onChange={getInputValue}
+					value={input}
+					placeholder="add a to-do"
+				/>
+				<button className="addToDoButton" type="submit" onClick={addToDoHandle}>
+					Add To-Do
+				</button>
+			</div>
 		</form>
 	);
 };
