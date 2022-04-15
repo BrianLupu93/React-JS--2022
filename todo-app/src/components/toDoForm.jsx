@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ToDoForm = () => {
 	const [ input, setInput ] = useState('');
@@ -14,13 +14,14 @@ const ToDoForm = () => {
 		setToDoListElement((toDoListElement) => [ ...toDoListElement, input ]);
 		setInput('');
 	};
+
 	console.log(toDoListElement);
 	return (
 		<form className="toDoForm">
 			<ul>
 				To-Do List
 				{toDoListElement.map((listElement) => (
-					<li>
+					<li className="list-element" id={toDoListElement.indexOf(listElement)}>
 						{listElement} <button>edit</button>
 						<button>delete</button>
 					</li>
