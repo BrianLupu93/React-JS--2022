@@ -11,6 +11,7 @@ const ToDoForm = () => {
 
 	const addToDoHandle = (event) => {
 		event.preventDefault();
+		if (input === '') return;
 		setToDoListElement((toDoListElement) => [ ...toDoListElement, input ]);
 		setInput('');
 	};
@@ -22,8 +23,10 @@ const ToDoForm = () => {
 				To-Do List
 				{toDoListElement.map((listElement) => (
 					<li className="list-element" id={toDoListElement.indexOf(listElement)}>
-						{listElement} <button>edit</button>
-						<button>delete</button>
+						{listElement}
+						<button className="complete-list-elemet">complete</button>
+						<button className="edit-list-element">edit</button>
+						<button className="delete-list-elemet">X</button>
 					</li>
 				))}
 			</ul>
