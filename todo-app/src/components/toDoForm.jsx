@@ -14,6 +14,7 @@ const ToDoForm = () => {
 	const addToDoHandle = (event) => {
 		event.preventDefault();
 		if (input === '') return;
+
 		setToDoListElement((toDoListElement) => [ ...toDoListElement, input ]);
 		setInput('');
 	};
@@ -24,9 +25,24 @@ const ToDoForm = () => {
 		const newToDoListElement = [ ...toDoListElement ];
 		newToDoListElement.splice(elementToDelete, 1);
 
-		console.log(newToDoListElement);
-
 		setToDoListElement(newToDoListElement);
+	};
+
+	const completeElement = (event) => {
+		event.preventDefault();
+		const completedElement = document.getElementById(event.target.id);
+		completedElement.className = 'list-element-completed';
+	};
+
+	const editListElement = (event) => {
+		event.preventDefault();
+		const selectedElementIndex = event.target.id;
+		const elementAtTheSelectedIndex = toDoListElement[selectedElementIndex];
+		const newListElement = prompt(`EDIT THE TASK:   ${elementAtTheSelectedIndex}`);
+
+		const newToDoListElementWithEdit = [ ...toDoListElement ];
+		newToDoListElementWithEdit.splice(selectedElementIndex, 1, newListElement);
+		setToDoListElement(newToDoListElementWithEdit);
 	};
 
 	return (
@@ -37,8 +53,20 @@ const ToDoForm = () => {
 					<li className="list-element" id={toDoListElement.indexOf(listElement)}>
 						{listElement}
 						<div className="setting-buttons">
-							<button className="btn complete-list-element">COMPLETE</button>
-							<button className="btn edit-list-element">EDIT</button>
+							<button
+								className="btn complete-list-element"
+								onClick={completeElement}
+								id={toDoListElement.indexOf(listElement)}
+							>
+								COMPLETE
+							</button>
+							<button
+								className="btn edit-list-element"
+								id={toDoListElement.indexOf(listElement)}
+								onClick={editListElement}
+							>
+								EDIT
+							</button>
 							<button
 								className="btn delete-list-element"
 								onClick={deleteElement}
@@ -51,7 +79,6 @@ const ToDoForm = () => {
 				))}
 			</ul>
 			<div className="input-field">
-				{' '}
 				<input
 					className="toDoInput"
 					type="text"
@@ -59,8 +86,8 @@ const ToDoForm = () => {
 					value={input}
 					placeholder="add a to-do"
 				/>
-				<button className="addToDoButton" type="submit" onClick={addToDoHandle}>
-					Add To-Do
+				<button className=" btn addToDoButton" type="submit" onClick={addToDoHandle}>
+					Add Task
 				</button>
 			</div>
 		</form>
