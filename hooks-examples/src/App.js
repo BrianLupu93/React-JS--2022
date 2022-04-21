@@ -1,15 +1,23 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useRef, useState } from 'react';
 
 const App = () => {
-	const [ data, setData ] = useState('');
+	const inputRef = useRef(null);
+	const [ name, setName ] = useState('Name');
 
-	useEffect(() => {
-		axios.get('https://jsonplaceholder.typicode.com/comments').then((response) => setData(response.data[0].email));
-		console.log('API was Called');
-	}, []);
+	const onClickHandle = () => {
+		console.log(inputRef.current.value);
+		setName(inputRef.current.value);
+		inputRef.current.value = '';
+		inputRef.current.focus();
+	};
 
-	return <div> Hello {data}</div>;
+	return (
+		<div>
+			<h1>{name}</h1>
+			<input type="text" placeholder="type something" ref={inputRef} />
+			<button onClick={onClickHandle}>Change Name</button>
+		</div>
+	);
 };
 
 export default App;
