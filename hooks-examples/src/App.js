@@ -41,6 +41,7 @@ const App = () => {
 				Toggle
 			</button>
 			{toggle && <h1>toggle</h1>}
+			<h1>Brian</h1>
 		</div>
 	);
 };
