@@ -1,20 +1,18 @@
-import Button from './components/button.component';
-import { useRef } from 'react';
+import { useState, createContext } from 'react';
+
+import User from './components/user.component';
+import Login from './components/Login.component';
+
+export const AppContext = createContext(null);
 
 const App = () => {
-	const buttonRef = useRef(null);
+	const [ username, setUsername ] = useState('');
 
 	return (
-		<div>
-			<button
-				onClick={() => {
-					buttonRef.current.alterToggle();
-				}}
-			>
-				Button From Parent
-			</button>
-			<Button ref={buttonRef} />
-		</div>
+		<AppContext.Provider value={{ username, setUsername }}>
+			<Login />
+			<User />
+		</AppContext.Provider>
 	);
 };
 
