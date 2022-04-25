@@ -1,18 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import Greet from './components/Greet';
+// import Message from './components/message';
+import ClickHandler from './components/ClickHandler';
 
-function App() {
+import ParentComponent from './components/ParentComponent';
+import UserGreeting from './components/UserGreeting';
+import { NameList } from './components/NameList';
+import { Form } from './components/Form';
+
+const App = () => {
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>Hello World!</p>
-				<a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-					Learn React
-				</a>
-			</header>
+		<div>
+			{/*	<Greet name="Bruce" heroName="Batman" />
+			<Greet name="Klark" heroName="Superman">
+				<button>Action</button>
+			</Greet>
+			<Greet name="Diana" heroName="Wonder Woman">
+				This is children props
+  </Greet>
+
+  <Message />
+  <ClickHandler /> 
+  <ParentComponent /> 
+<UserGreeting />
+  <NameList />*/}
+			<Form />
 		</div>
 	);
-}
+};
 
 export default App;
