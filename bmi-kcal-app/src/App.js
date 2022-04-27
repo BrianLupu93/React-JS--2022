@@ -3,7 +3,7 @@ import './App.css';
 const App = () => {
 	return (
 		<div>
-			<h1>nutrition-app</h1>
+			<h1>BMI-Kcal-App</h1>
 		</div>
 	);
 };
