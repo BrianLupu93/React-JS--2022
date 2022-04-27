@@ -1,9 +1,12 @@
 import './App.css';
+import { BmiCalculator } from './BMI-Component/BMI-Calculator/BmiCalculator';
+import { BmiDescription } from './BMI-Component/BMI-Description/BmiDescription';
 
 const App = () => {
 	return (
 		<div>
-			<h1>BMI-Kcal-App</h1>
+			<BmiDescription />
+			<BmiCalculator />
 		</div>
 	);
 };

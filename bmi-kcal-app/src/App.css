@@ -1,3 +1,13 @@
 *{
   text-align: center;
 }
+
+h2 {
+  color: rgb(79, 14, 165);
+}
+
+p {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
