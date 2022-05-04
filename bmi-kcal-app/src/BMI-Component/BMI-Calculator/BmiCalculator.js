@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './BmiCalculator.css';
 
-export const BmiCalculator = () => {
+export const BmiCalculator = (props) => {
 	const [ weight, setWeight ] = useState();
 	const [ height, setHeight ] = useState();
 	const [ bmi, setBmi ] = useState();
