@@ -19,11 +19,15 @@ export const RgbColorPickerFrame = () => {
         blue: blue,
       },
     ]);
-    setRed();
-    setGreen();
-    setBlue();
+    generateRandomRgb();
   };
-  console.log(rgbNumbers);
+
+  const generateRandomRgb = () => {
+    setRed(Math.floor(Math.random() * (255 - 0 + 1)) + 0);
+    setGreen(Math.floor(Math.random() * (255 - 0 + 1)) + 0);
+    setBlue(Math.floor(Math.random() * (255 - 0 + 1)) + 0);
+  };
+
   return (
     <div>
       <h2 className="rgb-title">RgbColorPicker</h2>
