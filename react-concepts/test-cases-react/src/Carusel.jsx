@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { CaruselComponent } from "./CaruselComponent";
-import "./caruselForm.css";
-import "./caruselComponent.css";
 
-export const CaruselForm = () => {
+import "./carusel.css";
+
+export const Carusel = () => {
   const [imagesIndex, setImagesIndex] = useState([1, 2, 3, 4, 5, 6, 7]);
 
   const [idMainImg, setIdMainImg] = useState();
