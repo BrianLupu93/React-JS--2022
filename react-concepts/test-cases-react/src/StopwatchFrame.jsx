@@ -28,6 +28,7 @@ function StopwatchFame() {
 
     clearInputs();
     setName();
+    setTime();
 
     return stopwatches;
   };
@@ -37,14 +38,21 @@ function StopwatchFame() {
       <h2 className="stop-watch-app">StopWatch APP</h2>
 
       <form onSubmit={createStopwatch} className="stopwatch-details">
-        <h3 className="title">StopWatch Details</h3>
-        <input vlaue={name} onChange={(e) => setName(e.target.value)} /> Name
         <input
+          vlaue={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Input the user name..."
+        />{" "}
+        Name
+        <input
+          type="number"
           vlaue={time}
           onChange={(e) => setTime(e.target.value * 60)}
-        />{" "}
+          required={true}
+          placeholder="How Many minutes?"
+        />
         Time
-        <button>Add stopwatch</button>
+        <button>Start stopwatch</button>
       </form>
 
       <div className="stopwatches">

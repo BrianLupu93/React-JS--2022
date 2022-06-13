@@ -31,7 +31,6 @@ export const RgbColorPickerFrame = () => {
     <div>
       <h2 className="rgb-title">RgbColorPicker</h2>
       <form className="rgb-inputs" onSubmit={createColor}>
-        <p>Please insert numbers from 0 to 255</p>
         <p>RED</p>
         <input
           className="input-rgb"

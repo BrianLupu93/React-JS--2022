@@ -9,7 +9,7 @@ export const Stopwatch = (props) => {
   const [zeroMin, setZeroMin] = useState();
   const [zeroSec, setZeroSec] = useState();
 
-  const [isPaused, setIsPaused] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     setVisualTime({ min: parseInt(count / 60), sec: count % 60 });
@@ -42,11 +42,12 @@ export const Stopwatch = (props) => {
     }, 1000);
   }, [isPaused, count]);
 
-  const startCounting = () => {
-    setIsPaused(false);
-  };
-  const stopCounting = () => {
-    setIsPaused(true);
+  const startStopCounting = () => {
+    if (!isPaused) {
+      setIsPaused(true);
+    } else {
+      setIsPaused(false);
+    }
   };
 
   console.log(isPaused);
@@ -60,8 +61,9 @@ export const Stopwatch = (props) => {
             {zeroSec ? `0${visualTime.sec}` : `${visualTime.sec}`}
           </p>
         }
-        <button onClick={startCounting}>Start</button>
-        <button onClick={stopCounting}>Stop</button>
+        <button onClick={startStopCounting}>
+          {isPaused ? "Start" : "Stop"}
+        </button>
       </label>
     </div>
   );

@@ -9,7 +9,6 @@ export const Carusel = () => {
 
   useEffect(() => {
     const random = Math.floor(Math.random() * (imagesIndex.length - 1 + 1));
-
     setIdMainImg(random);
   }, []);
 
@@ -29,66 +28,11 @@ export const Carusel = () => {
       }
     }
   };
-  console.log(idMainImg);
-  //const imgNumbers = 7;
-
-  //   const [idMainImg, setIdMainImg] = useState(
-  //     Math.floor(Math.random() * (imgNumbers - 1) + 1)
-  //   );
-  //   const [idPrevImg, setIdPrevImg] = useState(idMainImg - 1);
-  //   const [idNextImg, setIdNextImg] = useState(idMainImg + 1);
-
-  //   const prevImg = () => {
-  //     if (idPrevImg === 1) {
-  //       setIdPrevImg(imgNumbers);
-  //     } else {
-  //       setIdPrevImg(idPrevImg - 1);
-  //     }
-
-  //     if (idNextImg === 1) {
-  //       setIdNextImg(imgNumbers);
-  //     } else {
-  //       setIdNextImg(idNextImg - 1);
-  //     }
-
-  //     if (idMainImg === 1) {
-  //       setIdMainImg(imgNumbers);
-  //     } else {
-  //       setIdMainImg(idMainImg - 1);
-  //     }
-  //   };
-
-  //   const nextImg = () => {
-  //     if (idPrevImg === imgNumbers) {
-  //       setIdPrevImg(1);
-  //     } else {
-  //       setIdPrevImg(idPrevImg + 1);
-  //     }
-
-  //     if (idNextImg === imgNumbers) {
-  //       setIdNextImg(1);
-  //     } else {
-  //       setIdNextImg(idNextImg + 1);
-  //     }
-
-  //     if (idMainImg === imgNumbers) {
-  //       setIdMainImg(1);
-  //     } else {
-  //       setIdMainImg(idMainImg + 1);
-  //     }
-  //   };
-
-  //   console.log(idPrevImg, idMainImg, idNextImg);
+  console.log(idMainImg - 1, idMainImg, idMainImg + 1);
 
   return (
     <div className="carusel">
       <div className="carusel-form">
-        {/*  <CaruselComponent
-          idMainImg={idMainImg}
-          idPrevImg={idPrevImg}
-          idNextImg={idNextImg}
-        /> 
-  */}
         <div className="carusel-component">
           <div className="left">
             <img
