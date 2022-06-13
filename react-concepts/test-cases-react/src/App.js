@@ -1,5 +1,5 @@
 import "./App.css";
-import { CaruselForm } from "./CaruselForm";
+import { Carusel } from "./CaruselForm";
 import { RgbColorPickerFrame } from "./RgbColorPickerFrame";
 
 import StopwatchFame from "./StopwatchFrame";
