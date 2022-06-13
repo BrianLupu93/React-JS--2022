@@ -56,7 +56,7 @@ function StopwatchFame() {
       </form>
 
       <div className="stopwatches">
-        <p>Stopwatches</p>
+        <h2>Stopwatches</h2>
         {stopwatches.map((stopwatch) => {
           return (
             <Stopwatch

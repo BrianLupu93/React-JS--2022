@@ -28,7 +28,7 @@ export const RgbColorPickerFrame = () => {
   };
 
   return (
-    <div>
+    <div className="rgb-app">
       <h2 className="rgb-title">RgbColorPicker</h2>
       <form className="rgb-inputs" onSubmit={createColor}>
         <p>RED</p>

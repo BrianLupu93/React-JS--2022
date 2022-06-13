@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./stopwatch.css";
 
 export const Stopwatch = (props) => {
   const [count, setCount] = useState(props.time);
