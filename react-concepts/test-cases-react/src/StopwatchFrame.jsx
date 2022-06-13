@@ -32,9 +32,6 @@ function StopwatchFame() {
     return stopwatches;
   };
 
-  console.log(stopwatches);
-  console.log(name);
-
   return (
     <div className="stopwatch-frame">
       <h2 className="stop-watch-app">StopWatch APP</h2>

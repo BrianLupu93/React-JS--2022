@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { RgbColor } from "./RgbColor";
 import "./rgbColorPickerFrame.css";
 
 export const RgbColorPickerFrame = () => {
-  const [red, setRed] = useState();
-  const [green, setGreen] = useState();
-  const [blue, setBlue] = useState();
+  const [red, setRed] = useState(255);
+  const [green, setGreen] = useState(255);
+  const [blue, setBlue] = useState(255);
 
   const [rgbNumbers, setRgbNumbers] = useState([]);
 
@@ -33,9 +32,10 @@ export const RgbColorPickerFrame = () => {
       <h2 className="rgb-title">RgbColorPicker</h2>
       <form className="rgb-inputs" onSubmit={createColor}>
         <p>Please insert numbers from 0 to 255</p>
+        <p>RED</p>
         <input
           className="input-rgb"
-          type="number"
+          type="range"
           min="0"
           max="255"
           step="1"
@@ -43,10 +43,11 @@ export const RgbColorPickerFrame = () => {
           value={red || ""}
           onChange={(e) => setRed(Number(e.target.value))}
         />
-
+        {red}
+        <p>GREEN</p>
         <input
           className="input-rgb"
-          type="number"
+          type="range"
           min="0"
           max="255"
           step="1"
@@ -54,10 +55,11 @@ export const RgbColorPickerFrame = () => {
           value={green || ""}
           onChange={(e) => setGreen(Number(e.target.value))}
         />
-
+        {green}
+        <p>BLUE</p>
         <input
           className="input-rgb"
-          type="number"
+          type="range"
           min="0"
           max="255"
           step="1"
@@ -65,11 +67,18 @@ export const RgbColorPickerFrame = () => {
           value={blue || ""}
           onChange={(e) => setBlue(Number(e.target.value))}
         />
-        <button>Submit</button>
+        {blue}
+        <br />
+        <button>Random Color</button>
       </form>
-      {rgbNumbers.map((rgb) => {
-        return <RgbColor red={rgb.red} green={rgb.green} blue={rgb.blue} />;
-      })}
+      <div className="rgb-color-box">
+        <div
+          className="rgb-color"
+          style={{
+            backgroundColor: `rgb(${red}, ${green}, ${blue})`,
+          }}
+        ></div>
+      </div>
     </div>
   );
 };

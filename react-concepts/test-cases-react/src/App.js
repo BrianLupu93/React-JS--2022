@@ -1,4 +1,5 @@
 import "./App.css";
+import { CaruselForm } from "./CaruselForm";
 import { RgbColorPickerFrame } from "./RgbColorPickerFrame";
 
 import StopwatchFame from "./StopwatchFrame";
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       <StopwatchFame />
       <RgbColorPickerFrame />
+      <CaruselForm />
     </div>
   );
 }
