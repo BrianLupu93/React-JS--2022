@@ -4,32 +4,40 @@ import "./carusel.css";
 
 export const Carusel = () => {
   const [imagesIndex, setImagesIndex] = useState([1, 2, 3, 4, 5, 6, 7]);
-
   const [idMainImg, setIdMainImg] = useState();
+  const [isPaused, setIsPaused] = useState(true);
 
   useEffect(() => {
     const random = Math.floor(Math.random() * (imagesIndex.length - 1 + 1));
     setIdMainImg(random);
   }, []);
 
-  const changeImg = (action) => {
-    if (action === "next") {
-      if (idMainImg === imagesIndex.length - 1) {
-        setIdMainImg(0);
-      } else {
-        setIdMainImg((prev) => prev + 1);
-      }
-    }
-    if (action === "previous") {
-      if (idMainImg === 0) {
-        setIdMainImg(imagesIndex.length - 1);
-      } else {
-        setIdMainImg((prev) => prev - 1);
-      }
-    }
-  };
-  console.log(idMainImg - 1, idMainImg, idMainImg + 1);
+  useEffect(() => {
+    let interval = null;
 
+    if (!isPaused) {
+      interval = setInterval(() => {
+        const random = Math.floor(Math.random() * (imagesIndex.length - 1 + 1));
+        setIdMainImg(random);
+      }, 1000);
+    }
+    if (isPaused) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const startStopRender = () => {
+    if (isPaused) {
+      setIsPaused(false);
+    }
+    if (!isPaused) {
+      setIsPaused(true);
+    }
+    return isPaused;
+  };
+  console.log(isPaused);
+  console.log(idMainImg);
   return (
     <div className="carusel">
       <div className="carusel-form">
@@ -65,8 +73,7 @@ export const Carusel = () => {
           </div>
         </div>
       </div>
-      <button onClick={() => changeImg("previous")}>PREV</button>
-      <button onClick={() => changeImg("next")}>NEXT</button>
+      <button onClick={startStopRender}>{isPaused ? "Start" : "Stop"}</button>
     </div>
   );
 };

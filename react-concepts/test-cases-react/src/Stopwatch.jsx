@@ -51,7 +51,6 @@ export const Stopwatch = (props) => {
     }
   };
 
-  console.log(isPaused);
   return (
     <div className="stopwatch">
       <label>
